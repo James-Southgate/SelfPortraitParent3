@@ -247,13 +247,22 @@ BUILD_DIR = os.path.abspath(
     os.path.join(CURRENT_DIR, "..", "..", "self-portrait-website", "build")
 )
 
+import os
+from flask import send_from_directory
+
+# Compute an absolute path to the React build folder
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+BUILD_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "..", "self-portrait-website", "build"))
+
 @main_bp.route("/", defaults={"path": ""})
 @main_bp.route("/<path:path>")
 def serve_react(path):
-    target = os.path.join(BUILD_DIR, path)
-    if path and os.path.exists(target):
+    # If a specific asset is requested and exists, serve it.
+    if path and os.path.exists(os.path.join(BUILD_DIR, path)):
         return send_from_directory(BUILD_DIR, path)
+    # Otherwise, serve index.html (for client-side routing)
     return send_from_directory(BUILD_DIR, "index.html")
+
 
 
 @main_bp.after_request
