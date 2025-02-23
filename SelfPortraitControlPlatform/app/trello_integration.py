@@ -1,6 +1,6 @@
 import os
 import requests
-from app.models import Order
+from SelfPortraitControlPlatform.app.models import Order
 
 # Trello API credentials
 TRELLO_KEY = os.getenv('TRELLO_KEY', '1e2279831dd6b11e82dd7aaa934ee8c0')
