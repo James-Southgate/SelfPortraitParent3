@@ -1,7 +1,7 @@
 import os
 from flask import Blueprint, jsonify, request, send_from_directory, make_response
-from app.models import User, Order, Kit, Artwork, Invoice, Task
-from app import db
+from SelfPortraitControlPlatform.app.models import User, Order, Kit, Artwork, Invoice, Task
+from SelfPortraitControlPlatform.app import db
 from datetime import datetime
 from werkzeug.utils import secure_filename
 import shutil
@@ -202,7 +202,7 @@ def update_order_status(order_id):
 
     if new_status == 'Kit Returned':
         order.kit_received_at = 'Kit Returned'
-        from app.trello_integration import create_trello_card
+        from SelfPortraitControlPlatform.app.trello_integration import create_trello_card
         card_data = create_trello_card(order)
         if card_data is None:
             print("[TRELLO] Could not create a Trello card (check logs).")
@@ -260,7 +260,7 @@ def after_request(response):
 
 @main_bp.route('/api/orders/<int:order_id>/packing-slip', methods=['GET'])
 def generate_packing_slip(order_id):
-    from app.pdf_utils import create_invoice_pdf
+    from SelfPortraitControlPlatform.app.pdf_utils import create_invoice_pdf
 
     order = Order.query.get_or_404(order_id)
 
@@ -277,7 +277,7 @@ def generate_packing_slip(order_id):
 
 @main_bp.route('/api/orders/<int:order_id>/next-steps', methods=['GET'])
 def generate_next_steps(order_id):
-    from app.pdf_utils import create_next_steps_pdf
+    from SelfPortraitControlPlatform.app.pdf_utils import create_next_steps_pdf
     order = Order.query.get_or_404(order_id)
 
     pdf_data = create_next_steps_pdf(order)
@@ -292,7 +292,7 @@ def generate_next_steps(order_id):
 
 @main_bp.route('/api/orders/<int:order_id>/checklist', methods=['GET'])
 def generate_checklist(order_id):
-    from app.pdf_utils import create_checklist_pdf
+    from SelfPortraitControlPlatform.app.pdf_utils import create_checklist_pdf
     order = Order.query.get_or_404(order_id)
 
     pdf_data = create_checklist_pdf(order)
@@ -308,7 +308,7 @@ def generate_checklist(order_id):
 
 @main_bp.route('/api/orders/<int:order_id>/final-package-checklist', methods=['GET'])
 def generate_final_package_checklist(order_id):
-    from app.pdf_utils import create_final_package_checklist_pdf
+    from SelfPortraitControlPlatform.app.pdf_utils import create_final_package_checklist_pdf
     from flask import make_response
 
     order = Order.query.get_or_404(order_id)
@@ -483,7 +483,7 @@ def upload_artwork_images(order_id):
 @main_bp.route('/static/artwork/<path:filename>')
 def serve_artwork(filename):
     """
-    Serve a file from app/static/artwork (including subfolders).
+    Serve a file from SelfPortraitControlPlatform.app/static/artwork (including subfolders).
     <path:filename> means it can contain slashes like 5/world_icon.jpeg
     """
     return send_from_directory(ARTWORK_UPLOAD_FOLDER, filename)
@@ -537,7 +537,7 @@ def delete_artwork_file(order_id):
 
 @main_bp.route('/api/invoices/<int:invoice_id>/status', methods=['PATCH'])
 def update_invoice_status(invoice_id):
-    from app.pdf_utils import generate_invoice_pdf
+    from SelfPortraitControlPlatform.app.pdf_utils import generate_invoice_pdf
     invoice = Invoice.query.get_or_404(invoice_id)
     data = request.get_json()
     new_status = data.get('status')
@@ -583,7 +583,7 @@ def download_invoice(invoice_id):
 """
 
 
-from app.pdf_utils import generate_invoice_pdf  # Ensure this function exists and works
+from SelfPortraitControlPlatform.app.pdf_utils import generate_invoice_pdf  # Ensure this function exists and works
 
 @main_bp.route('/api/invoices/<int:invoice_id>/download', methods=['GET'])
 def download_invoice(invoice_id):
