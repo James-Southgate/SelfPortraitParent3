@@ -23,8 +23,8 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    from app import models  # Ensure models are imported
-    from app.routes import main_bp
+    from SelfPortraitControlPlatform.app import models  # Ensure models are imported
+    from SelfPortraitControlPlatform.app.routes import main_bp
     app.register_blueprint(main_bp)
 
     return app
