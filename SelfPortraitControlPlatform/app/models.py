@@ -1,4 +1,4 @@
-from app import db
+from SelfPortraitControlPlatform.app import db
 from datetime import datetime
 from sqlalchemy.dialects.mysql import JSON
 
