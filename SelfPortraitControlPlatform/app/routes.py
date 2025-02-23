@@ -247,6 +247,8 @@ main_bp = Blueprint('main', __name__)
 # Compute an absolute path to the React build folder
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 BUILD_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "..", "self-portrait-website", "build"))
+print("[DEBUG] BUILD_DIR =>", BUILD_DIR, flush=True)
+
 
 @main_bp.route("/", defaults={"path": ""})
 @main_bp.route("/<path:path>")
