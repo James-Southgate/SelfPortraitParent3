@@ -236,14 +236,25 @@ def update_order_status(order_id):
 
 
 
-# Serve React build files
+import os
+from flask import Blueprint, send_from_directory, ...
+
+main_bp = Blueprint('main', __name__)
+
+# Compute an absolute path to the build/ folder
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+BUILD_DIR = os.path.abspath(
+    os.path.join(CURRENT_DIR, "..", "..", "self-portrait-website", "build")
+)
+
 @main_bp.route("/", defaults={"path": ""})
 @main_bp.route("/<path:path>")
 def serve_react(path):
-    react_build_path = "../self-portrait-website/build"
-    if path != "" and os.path.exists(os.path.join(react_build_path, path)):
-        return send_from_directory(react_build_path, path)
-    return send_from_directory(react_build_path, "index.html")
+    target = os.path.join(BUILD_DIR, path)
+    if path and os.path.exists(target):
+        return send_from_directory(BUILD_DIR, path)
+    return send_from_directory(BUILD_DIR, "index.html")
+
 
 @main_bp.after_request
 def after_request(response):
