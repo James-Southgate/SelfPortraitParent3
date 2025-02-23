@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
 
-
 db = SQLAlchemy()
 migrate = Migrate()
 
@@ -15,9 +14,11 @@ def create_app():
          supports_credentials=True,
          allow_headers=["Content-Type"],
          methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
-         )
+    )
 
-    app.config.from_object('config.Config')
+    # Use your Config or ProductionConfig from SelfPortraitControlPlatform/config.py
+    app.config.from_object('SelfPortraitControlPlatform.config.Config')
+    # or: app.config.from_object('SelfPortraitControlPlatform.config.ProductionConfig')
 
     db.init_app(app)
     migrate.init_app(app, db)
@@ -27,10 +28,3 @@ def create_app():
     app.register_blueprint(main_bp)
 
     return app
-
-
-
-
-
-
-
