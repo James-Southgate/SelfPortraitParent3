@@ -237,7 +237,7 @@ def update_order_status(order_id):
 
 
 import os
-from flask import Blueprint, send_from_directory, ...
+from flask import Blueprint, send_from_directory
 
 main_bp = Blueprint('main', __name__)
 
