@@ -1,0 +1,197 @@
+/* UserManagement.css */
+
+/*
+   1) A main container similar to .dashboard-container / .artwork-management-container.
+      This sets overall width, background, etc.
+*/
+.user-management-container {
+  width: 100%;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 1px 2rem;
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/*
+   2) Title, styled similar to .dashboard-title or .artwork-management-title
+*/
+.user-management-title {
+  text-align: left;
+  font-weight: 600;
+  color: #444;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+
+/*
+   3) A "card" container for the "Create New User" form
+   (similar to .card.dashboard-card from Dashboard.css).
+*/
+.create-user-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 16px 10px rgba(237, 237, 237, 1);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/*
+   4) The heading for the form (matching .card-header-title from Dashboard)
+*/
+.create-user-card-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 0.5rem;
+}
+
+/*
+   5) The form styles, consistent with other forms.
+*/
+.create-user-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+  max-width: 500px;
+}
+
+.create-user-form input[type="text"],
+.create-user-form input[type="password"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.create-user-form button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+  background-color: #2196f3;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+.create-user-form button:hover {
+  background-color: #1976d2;
+}
+
+/*
+   6) Feedback message (like “User created.”)
+   — style it in a subtle highlight color.
+*/
+.user-management-feedback {
+  color: #0052cc;
+  margin-bottom: 1rem;
+}
+
+/*
+   7) The table container for “Existing Users” with a card-like appearance
+*/
+.user-list-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 16px 10px rgba(237, 237, 237, 1);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.user-list-card-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 0.5rem;
+}
+
+/*
+   8) Table styling (similar to .orders-table or .fullwidth-table).
+*/
+.user-management-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.user-management-table th,
+.user-management-table td {
+  border: 1px solid #e0e0e0;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.user-management-table th {
+  background-color: #f7f7f7;
+  color: #555;
+  font-weight: 600;
+}
+
+.user-management-table tr:hover {
+  background-color: #fafafa;
+}
+
+/*
+   9) Delete button in the table
+*/
+.user-delete-button {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #f44336;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+}
+.user-delete-button:hover {
+  background-color: #f44336;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+/*
+   10) A small note or italic text for disclaimers, etc. (optional)
+*/
+.user-management-note {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+
+
+
+.create-user-form {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center;    /* Center children horizontally */
+}
+
+
+.create-user-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+  max-width: 500px;
+  width: 100%;             /* Ensure labels take full width in flex container */
+  text-align: center;      /* Center text inside labels if desired */
+}

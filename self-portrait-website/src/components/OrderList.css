@@ -1,0 +1,188 @@
+/* =========================================
+   1) Container & Basic Layout
+   ========================================= */
+.order-list-container {
+  /* This matches the overall wrapper style used on the Dashboard */
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  background-color: #fff;    /* If you want a white card-like background */
+  border: 1px solid #ddd;    /* Light border to mimic the card style */
+  border-radius: 8px;
+  box-shadow: 0 0 16px 10px rgba(237, 237, 237, 1);
+  margin: 1rem auto;         /* Center horizontally if needed */
+}
+
+/* Optional top heading styling (like a card header) */
+.order-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.order-list-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #444;
+  margin: 0;
+}
+
+/* =========================================
+   2) Filter Section
+   ========================================= */
+.order-list-filters {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.order-list-filters h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.filters-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filters-inputs input[type="text"] {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.filters-inputs input[type="text"]:focus {
+  border-color: #61dafb;
+}
+
+/* =========================================
+   3) Table Section
+   ========================================= */
+
+/* Wrapper to control overflow if needed */
+.order-list-table-wrapper {
+  padding: 1rem;
+  overflow-x: auto;  /* horizontal scrolling if table is wide */
+}
+
+/* Basic table styling to match Dashboard */
+.order-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* If you want a consistent border style:
+     border: 1px solid #ddd;
+  */
+}
+
+.order-list-table th,
+.order-list-table td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+}
+
+.order-list-table th {
+  background-color: #f7f7f7;
+  color: #555;
+  font-weight: 600;
+  cursor: pointer;  /* for clickable sorting columns */
+  white-space: nowrap;
+}
+
+/* Let the sort arrow appear. For example, you can style the "▲" or "▼" with margin. */
+.order-list-table th span.sort-arrow {
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Hover highlight row */
+.order-list-table tr:hover {
+  background-color: #fafafa;
+}
+
+/* Optional narrower columns for certain fields
+   or min-width constraints, e.g.:
+.order-list-table th:nth-child(1),
+.order-list-table td:nth-child(1) {
+  min-width: 70px;
+}
+*/
+
+/* =========================================
+   4) No Matching Orders (Empty State)
+   ========================================= */
+.no-matching-orders {
+  padding: 1rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* =========================================
+   5) Pagination Controls
+   ========================================= */
+.pagination-controls {
+  text-align: right;
+  padding: 1rem;
+}
+
+.pagination-controls button {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #0052cc;
+  background-color: white;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  color: #0052cc;
+  background-color: #e8f1ff;
+  border-color: transparent;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* If you want the "Page X of Y" text to appear nicely, you can style a span: */
+.pagination-info {
+  margin: 0 1rem;
+  font-weight: 500;
+  color: #444;
+}
+
+/* =========================================
+   6) Responsive Tweaks
+   ========================================= */
+@media (max-width: 768px) {
+  .filters-inputs {
+    flex-direction: column;
+  }
+
+  .order-list-filters {
+    padding: 1rem;
+  }
+
+  .order-list-table th,
+  .order-list-table td {
+    font-size: 0.85rem;
+  }
+
+  .order-list-title {
+    font-size: 1.1rem;
+  }
+}
